@@ -10,6 +10,7 @@ import middle.StockReader;
 
 import javax.swing.*;
 import java.util.Observable;
+import java.util.List;
 
 /**
  * Implements the Model of the customer client
@@ -106,6 +107,8 @@ public class CustomerModel extends Observable
     thePic = null;                            // No picture
     setChanged(); notifyObservers(theAction);
   }
+
+
   
   /**
    * Return a picture of the product

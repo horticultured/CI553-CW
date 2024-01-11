@@ -38,7 +38,14 @@ public class CashierController
   {
     model.doBuy();
   }
-  
+
+  public void doBuyTwo() { model.doBuyTwo();}
+
+  public void doRemoveLastItem() {
+    model.removeLastItem();
+  }
+
+
    /**
    * Bought interaction from view
    */

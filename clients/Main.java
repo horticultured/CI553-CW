@@ -68,9 +68,13 @@ class Main
   {
     JFrame  window = new JFrame();
     window.setTitle( "Customer Client MVC");
+
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     Dimension pos = PosOnScrn.getPos();
-    
+
+    Color myColor = new Color(Integer.parseInt("70576C", 16));
+    window.getContentPane().setBackground(myColor);
+
     CustomerModel model      = new CustomerModel(mlf);
     CustomerView view        = new CustomerView( window, mlf, pos.width, pos.height );
     CustomerController cont  = new CustomerController( model, view );
@@ -90,6 +94,9 @@ class Main
     window.setTitle( "Cashier Client MVC");
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     Dimension pos = PosOnScrn.getPos();
+
+    Color myColor = new Color(Integer.parseInt("70576C", 16));
+    window.getContentPane().setBackground(myColor);
     
     CashierModel model      = new CashierModel(mlf);
     CashierView view        = new CashierView( window, mlf, pos.width, pos.height );
@@ -108,6 +115,9 @@ class Main
     window.setTitle( "BackDoor Client MVC");
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     Dimension pos = PosOnScrn.getPos();
+
+    Color myColor = new Color(Integer.parseInt("70576C", 16));
+    window.getContentPane().setBackground(myColor);
     
     BackDoorModel model      = new BackDoorModel(mlf);
     BackDoorView view        = new BackDoorView( window, mlf, pos.width, pos.height );
@@ -126,6 +136,9 @@ class Main
     window.setTitle( "Pick Client MVC");
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     Dimension pos = PosOnScrn.getPos();
+
+    Color myColor = new Color(Integer.parseInt("70576C", 16));
+    window.getContentPane().setBackground(myColor);
     
     PickModel model      = new PickModel(mlf);
     PickView view        = new PickView( window, mlf, pos.width, pos.height );
@@ -143,6 +156,9 @@ class Main
     window.setTitle( "Display Client MVC");
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     Dimension pos = PosOnScrn.getPos();
+
+    Color myColor = new Color(Integer.parseInt("70576C", 16));
+    window.getContentPane().setBackground(myColor);
     
     DisplayModel model      = new DisplayModel(mlf);
     DisplayView view        = new DisplayView( window, mlf, pos.width, pos.height );
@@ -161,6 +177,9 @@ class Main
     window.setTitle( "Collect Client MVC");
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     Dimension pos = PosOnScrn.getPos();
+
+    Color myColor = new Color(Integer.parseInt("70576C", 16));
+    window.getContentPane().setBackground(myColor);
     
     CollectModel model      = new CollectModel(mlf);
     CollectView view        = new CollectView( window, mlf, pos.width, pos.height );

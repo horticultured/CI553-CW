@@ -21,6 +21,7 @@ public class CustomerView implements Observer
 {
   class Name                              // Names of buttons
   {
+
     public static final String CHECK  = "Check";
     public static final String CLEAR  = "Clear";
   }
@@ -63,6 +64,8 @@ public class CustomerView implements Observer
     rootWindow.setLocation( x, y );
 
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
+
+
 
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check button
     theBtCheck.addActionListener(                   // Call back code
@@ -111,7 +114,7 @@ public class CustomerView implements Observer
    * @param modelC   The observed model
    * @param arg      Specific args 
    */
-   
+
   public void update( Observable modelC, Object arg )
   {
     CustomerModel model  = (CustomerModel) modelC;
@@ -127,5 +130,7 @@ public class CustomerView implements Observer
     theOutput.setText( model.getBasket().getDetails() );
     theInput.requestFocus();               // Focus is here
   }
+
+
 
 }

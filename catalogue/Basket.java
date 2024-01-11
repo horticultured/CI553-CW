@@ -94,4 +94,12 @@ public class Basket extends ArrayList<Product> implements Serializable
     }
     return sb.toString();
   }
+
+  public Product removeLast() {
+    if (!this.isEmpty()) {
+      return this.remove(this.size() - 1);
+    }
+    return null;
+  }
+
 }

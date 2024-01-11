@@ -7,7 +7,7 @@ import debug.DEBUG;
 import middle.MiddleFactory;
 import middle.StockException;
 import middle.StockReadWriter;
-
+import javax.swing.ImageIcon;
 import java.util.Observable;
 
 /**
@@ -21,6 +21,10 @@ public class BackDoorModel extends Observable
   private String      pn = "";                      // Product being processed
 
   private StockReadWriter theStock     = null;
+  private ImageIcon thePic = null;
+  public ImageIcon getPicture() {
+    return thePic;
+  }
 
   /*
    * Construct the model of the back door client
@@ -62,29 +66,25 @@ public class BackDoorModel extends Observable
    * Query 
    * @param productNum The product number of the item
    */
-  public void doQuery(String productNum )
-  {
+  public void doQuery(String productNum) {
     String theAction = "";
-    pn  = productNum.trim();                    // Product no.
-    try
-    {                 //  & quantity
-      if ( theStock.exists( pn ) )              // Stock Exists?
-      {                                         // T
-        Product pr = theStock.getDetails( pn ); //  Product
-        theAction =                             //   Display 
-          String.format( "%s : %7.2f (%2d) ",   //
-          pr.getDescription(),                  //    description
-          pr.getPrice(),                        //    price
-          pr.getQuantity() );                   //    quantity
-      } else {                                  //  F
-        theAction =                             //   Inform
-          "Unknown product number " + pn;       //  product number
-      } 
-    } catch( StockException e )
-    {
+    pn = productNum.trim(); // Product number
+
+    try {
+      if (theStock.exists(pn)) {
+        Product pr = theStock.getDetails(pn);
+        thePic = theStock.getImage(pn);
+        theAction = String.format("%s : %7.2f (%2d) ",
+                pr.getDescription(), pr.getPrice(), pr.getQuantity());
+      } else {
+        theAction = "Unknown product number " + pn;
+      }
+    } catch (StockException e) {
       theAction = e.getMessage();
     }
-    setChanged(); notifyObservers(theAction);
+
+    setChanged();
+    notifyObservers(theAction);
   }
 
   /**

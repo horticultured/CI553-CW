@@ -18,6 +18,8 @@ public interface StockReadWriter extends StockReader
    * @return StockNumber, Description, Price, Quantity
    * @throws middle.StockException if issue
    */
+
+
   boolean buyStock(String pNum, int amount) throws StockException;
 
   /**
@@ -35,5 +37,6 @@ public interface StockReadWriter extends StockReader
    * @throws middle.StockException if issue
    */
   void modifyStock(Product detail) throws StockException;
+
 
 }

@@ -17,11 +17,13 @@ import java.util.Observer;
  */
 public class CashierView implements Observer
 {
-  private static final int H = 300;       // Height of window pixels
+  private static final int H = 380;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
   
   private static final String CHECK  = "Check";
   private static final String BUY    = "Buy";
+  private static final String BUY2    = "Buy 2";
+  private static final String REMOVE    = "Remove";
   private static final String BOUGHT = "Bought";
 
   private final JLabel      theAction  = new JLabel();
@@ -30,6 +32,8 @@ public class CashierView implements Observer
   private final JScrollPane theSP      = new JScrollPane();
   private final JButton     theBtCheck = new JButton( CHECK );
   private final JButton     theBtBuy   = new JButton( BUY );
+  private final JButton theBtBuyTwo = new JButton( BUY2);
+  private final JButton theBtRemoveLast = new JButton( REMOVE);
   private final JButton     theBtBought= new JButton( BOUGHT );
 
   private StockReadWriter theStock     = null;
@@ -70,9 +74,21 @@ public class CashierView implements Observer
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
       e -> cont.doBuy() );
-    cp.add( theBtBuy );                             //  Add to canvas
+    cp.add( theBtBuy ); //  Add to canvas
 
-    theBtBought.setBounds( 16, 25+60*3, 80, 40 );   // Clear Button
+    theBtBuyTwo.setBounds(16, 25+60*2, 80, 40);
+    theBtBuyTwo.addActionListener(
+            e -> cont.doBuyTwo()
+    );
+    cp.add(theBtBuyTwo); // Add to canvas
+
+    theBtRemoveLast.setBounds(16, 25+60*3, 80, 40);
+    theBtRemoveLast.addActionListener(
+            e -> cont.doRemoveLastItem()
+    );
+    cp.add(theBtRemoveLast); // Add to canvas
+
+    theBtBought.setBounds( 16, 25+60*4, 80, 40 );   // Clear Button
     theBtBought.addActionListener(                  // Call back code
       e -> cont.doBought() );
     cp.add( theBtBought );                          //  Add to canvas

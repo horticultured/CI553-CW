@@ -2,7 +2,7 @@ package clients.backDoor;
 
 import middle.MiddleFactory;
 import middle.StockReadWriter;
-
+import clients.Picture;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -20,7 +20,7 @@ public class BackDoorView implements Observer
   private static final String CLEAR    = "Clear";
   private static final String QUERY    = "Query";
  
-  private static final int H = 300;       // Height of window pixels
+  private static final int H = 340;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
 
   private final JLabel      theAction  = new JLabel();
@@ -31,6 +31,7 @@ public class BackDoorView implements Observer
   private final JButton     theBtClear = new JButton( CLEAR );
   private final JButton     theBtRStock = new JButton( RESTOCK );
   private final JButton     theBtQuery = new JButton( QUERY );
+  private final Picture thePicture = new Picture(80, 80);
   
   private StockReadWriter theStock     = null;
   private BackDoorController cont= null;
@@ -53,7 +54,7 @@ public class BackDoorView implements Observer
     }
     Container cp         = rpc.getContentPane();    // Content Pane
     Container rootWindow = (Container) rpc;         // Root Window
-    cp.setLayout(null);                             // No layout manager
+    cp.setLayout(null);
     rootWindow.setSize( W, H );                     // Size of Window
     rootWindow.setLocation( x, y );
     
@@ -95,6 +96,11 @@ public class BackDoorView implements Observer
     theSP.getViewport().add( theOutput );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
     theInput.requestFocus();                        // Focus is here
+
+    thePicture.setBounds(16, 25 + 60 * 3, 80, 80);
+    cp.add(thePicture);
+    thePicture.clear();
+
   }
   
   public void setController( BackDoorController c )
@@ -108,14 +114,17 @@ public class BackDoorView implements Observer
    * @param arg      Specific args 
    */
   @Override
-  public void update( Observable modelC, Object arg )
-  {
-    BackDoorModel model  = (BackDoorModel) modelC;
-    String        message = (String) arg;
-    theAction.setText( message );
-    
-    theOutput.setText( model.getBasket().getDetails() );
-    theInput.requestFocus();
+  public void update(Observable modelC, Object arg) {
+    BackDoorModel model = (BackDoorModel) modelC;
+    String message = (String) arg;
+    theAction.setText(message);
+
+    ImageIcon image = model.getPicture();
+    if (image != null) {
+      thePicture.set(image);
+    } else {
+      thePicture.clear();
+    }
   }
 
 }
